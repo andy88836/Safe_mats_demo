@@ -1,0 +1,22 @@
+# Keep this repository scoped to the Safe-MOF-Agent code package.
+# The manuscript workspace contains large data, figures, Word files, and private outputs.
+
+*
+
+!.gitignore
+!.env.example
+!run_safe_mof_agent.py
+
+!safe_mof_agent/
+!safe_mof_agent/**
+
+!Agentic/
+!Agentic/Safe-MOF-Agent_MVP_README.md
+!Agentic/Safe-MOF-Agent_LLM_IMPLEMENTATION.md
+!Agentic/Safe-MOF-Agent_paper_insert.md
+
+.env
+__pycache__/
+*.pyc
+.venv/
+Agentic/safe_mof_agent_reports/
