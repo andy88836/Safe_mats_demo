@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: MOFScreen-Agent
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "<AUTHOR_FAMILY_NAME>"
+    given-names: "<AUTHOR_GIVEN_NAME>"
+    affiliation: "South China Agricultural University"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+repository-code: "https://github.com/<OWNER>/MOFScreen-Agent"
+license: MIT
+keywords:
+  - metal-organic frameworks
+  - safe-by-design
+  - aquatic toxicity
+  - adsorption screening
+  - machine learning
+references:
+  - type: article
+    title: "Implementing Comprehensive Machine Learning Models of Multispecies Toxicity Assessment to Improve Chemical Regulation"
+    authors:
+      - name: "Yan Lab"
+    journal: "Environment & Health"
+    year: 2024
+    notes: "AquaTox toxicity prediction framework"
+  - type: article
+    title: "Safe-by-design screening of Metal-Organic Frameworks for VOC adsorption"
+    authors:
+      - name: "Yan Lab"
+    year: 2025
+    notes: "Manuscript in preparation"

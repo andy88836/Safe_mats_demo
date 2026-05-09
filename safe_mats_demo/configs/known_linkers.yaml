@@ -1,0 +1,61 @@
+linkers:
+  BDC:
+    name: 1,4-benzenedicarboxylic acid
+    smiles: "OC(=O)c1ccc(C(=O)O)cc1"
+    formula: C8H6O4
+  BTC:
+    name: 1,3,5-benzenetricarboxylic acid
+    smiles: "OC(=O)c1cc(C(=O)O)cc(C(=O)O)c1"
+    formula: C9H6O6
+  NDC:
+    name: 2,6-naphthalenedicarboxylic acid
+    smiles: "OC(=O)c1ccc2cc(C(=O)O)ccc2c1"
+    formula: C12H8O4
+  BPDC:
+    name: 4,4'-biphenyldicarboxylic acid
+    smiles: "OC(=O)c1ccc(-c2ccc(C(=O)O)cc2)cc1"
+    formula: C14H10O4
+  ABDC:
+    name: 2-aminoterephthalic acid
+    smiles: "Nc1cc(C(=O)O)ccc1C(=O)O"
+    formula: C8H7NO4
+  H2DOBDC:
+    name: 2,5-dihydroxyterephthalic acid
+    smiles: "OC(=O)c1cc(O)c(C(=O)O)cc1O"
+    formula: C8H6O6
+  MeIm:
+    name: 2-methylimidazole
+    smiles: "Cc1[nH]ccn1"
+    formula: C4H6N2
+  BIm:
+    name: benzimidazole
+    smiles: "c1ccc2[nH]cnc2c1"
+    formula: C7H6N2
+  HKUST_BTC:
+    name: trimesic acid (HKUST-1 linker)
+    smiles: "OC(=O)c1cc(C(=O)O)cc(C(=O)O)c1"
+    formula: C9H6O6
+  pyz:
+    name: pyrazine
+    smiles: "c1cnccn1"
+    formula: C4H4N2
+  bpy:
+    name: 4,4'-bipyridine
+    smiles: "c1cc(-c2ccncc2)ccn1"
+    formula: C10H8N2
+  TCPP:
+    name: tetrakis(4-carboxyphenyl)porphyrin
+    smiles: "OC(=O)c1ccc(-c2c3ccc(-c4ccc(C(=O)O)cc4)n3[H])cc1"
+    formula: C48H30N4O8
+  fumarate:
+    name: fumaric acid
+    smiles: "OC(=O)/C=C/C(=O)O"
+    formula: C4H4O4
+  oxalate:
+    name: oxalic acid
+    smiles: "OC(=O)C(=O)O"
+    formula: C2H2O4
+  squarate:
+    name: squaric acid
+    smiles: "OC1=C(O)C(=O)C1=O"
+    formula: C4H2O4

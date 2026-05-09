@@ -1,0 +1,21 @@
+scoring:
+  weights:
+    adsorption: 0.4
+    safety: 0.3
+    toxicity: 0.3
+  adsorption_normalization:
+    benzene_ref_mg_g: 1000.0
+  safety_scores:
+    white: 10.0
+    grey: 7.0
+    black: 0.0
+    unknown: 5.0
+  recommendation:
+    recommend_threshold: 7.0
+    borderline_threshold: 5.0
+
+pmt_criteria:
+  logP_max: 4.5
+  mw_max: 700.0
+  hbd_max: 5
+  hba_max: 10

@@ -15,6 +15,24 @@
 !Agentic/Safe-MOF-Agent_LLM_IMPLEMENTATION.md
 !Agentic/Safe-MOF-Agent_paper_insert.md
 
+!safe_mats_demo/
+!safe_mats_demo/**
+
+# Re-exclude sensitive/generated files within safe_mats_demo
+safe_mats_demo/configs/paths.yaml
+safe_mats_demo/.venv/
+safe_mats_demo/__pycache__/
+safe_mats_demo/**/__pycache__/
+safe_mats_demo/**/*.pyc
+safe_mats_demo/**/*.pkl
+safe_mats_demo/**/*.joblib
+safe_mats_demo/trained_toxicity_models/
+safe_mats_demo/results.csv
+safe_mats_demo/tests/fixtures/test_results.csv
+safe_mats_demo/docs/screenshots/*.png
+safe_mats_demo/diagnose_*.py
+safe_mats_demo/take_screenshots.py
+
 .env
 __pycache__/
 *.pyc

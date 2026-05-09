@@ -1,0 +1,27 @@
+# Virtual env
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Models (too large, distribute via release)
+*.pkl
+*.joblib
+trained_toxicity_models/*.pkl
+models/
+
+# Local outputs
+results.csv
+*.log
+docs/screenshots/*.png
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# Sensitive
+.env
+*.key
+configs/paths.yaml   # contains local absolute paths, not for repo

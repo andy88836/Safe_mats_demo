@@ -1,0 +1,39 @@
+black_list:
+  - Pb
+  - Cd
+  - Hg
+  - As
+  - Tl
+  - Be
+  - Cr
+  - U
+
+grey_list:
+  - Cu
+  - Ni
+  - Co
+  - Mn
+  - V
+  - Mo
+  - W
+  - Sn
+  - Sb
+  - Ba
+  - Se
+
+white_list:
+  - Zn
+  - Zr
+  - Fe
+  - Al
+  - Mg
+  - Ca
+  - Ti
+  - Li
+  - K
+  - Na
+  - In
+  - La
+  - Ce
+  - Y
+  - Sc

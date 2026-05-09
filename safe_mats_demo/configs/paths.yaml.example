@@ -1,0 +1,47 @@
+# Copy this file to paths.yaml and fill in your local model paths
+adsorption_models:
+  root: "<YOUR_MODEL_PATH>/sine_matrix"
+  benzene_model: "<YOUR_MODEL_PATH>/sine_matrix/Benzene/tuning_seed8/rf_only_seed8_best_model_benzene.pkl"
+  benzene_base_model: "<YOUR_MODEL_PATH>/sine_matrix/Benzene/best_model_benzene.pkl"
+  benzene_scaler: "<YOUR_MODEL_PATH>/sine_matrix/Benzene/scaler_benzene.pkl"
+  toluene_model: "<YOUR_MODEL_PATH>/sine_matrix/Toluene/Toluene/best_model_toluene.pkl"
+  toluene_scaler: "<YOUR_MODEL_PATH>/sine_matrix/Toluene/Toluene/scaler_toluene.pkl"
+  benzene_target_dim: 520
+  toluene_target_dim: 584
+  benzene_training_data: "<YOUR_MODEL_PATH>/sine_matrix/Benzene/sine_matrix_benzene_IQR_2_modeling_cleaned.csv"
+  toluene_training_data: "<YOUR_MODEL_PATH>/sine_matrix/Toluene/Toluene/sine_matrix_toluene_modeling_cleaned_toluene.csv"
+
+toxicity_models:
+  root: "<YOUR_MODEL_PATH>/AquaTox"
+  model_dir: "<YOUR_PROJECT_PATH>/safe_mats_demo/trained_toxicity_models"
+  endpoints:
+    - name: "LC50"
+      organism: "Pimephales promelas"
+      duration: "96h"
+      training_sdf: "<YOUR_MODEL_PATH>/AquaTox/data/LC50/LC50_training.sdf"
+      training_csv: "<YOUR_MODEL_PATH>/AquaTox/data/LC50/LC50_training.csv"
+    - name: "LC50DM"
+      organism: "Daphnia magna"
+      duration: "48h"
+      training_sdf: "<YOUR_MODEL_PATH>/AquaTox/data/LC50DM/LC50DM_training.sdf"
+      training_csv: "<YOUR_MODEL_PATH>/AquaTox/data/LC50DM/LC50DM_training.csv"
+    - name: "IGC50"
+      organism: "Tetrahymena pyriformis"
+      duration: "48h"
+      training_sdf: "<YOUR_MODEL_PATH>/AquaTox/data/IGC50/IGC50_training.sdf"
+      training_csv: "<YOUR_MODEL_PATH>/AquaTox/data/IGC50/IGC50_training.csv"
+    - name: "IBC50"
+      organism: "Vibrio fischeri"
+      duration: "15min"
+      training_sdf: "<YOUR_MODEL_PATH>/AquaTox/data/IBC50/IBC50_training.sdf"
+      training_csv: "<YOUR_MODEL_PATH>/AquaTox/data/IBC50/IBC50_training.csv"
+  fingerprint:
+    type: "morgan"
+    radius: 2
+    n_bits: 2048
+  model_params:
+    n_estimators: 500
+    max_depth: null
+    min_samples_leaf: 2
+    random_state: 42
+    test_size: 0.2
