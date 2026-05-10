@@ -1,5 +1,4 @@
 """LangGraph node functions for MOF screening pipeline."""
-import os
 from pathlib import Path
 
 from agent.state import ScreeningState
@@ -258,28 +257,38 @@ def _compute_rule_based_score(state: ScreeningState) -> tuple[float, str, str]:
 def _try_llm_explanation(
     state: ScreeningState, score: float, recommendation: str
 ) -> str | None:
-    api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("DASHSCOPE_API_KEY")
-    if not api_key:
+    provider = state.get("llm_provider", "rule_based")
+    api_key = state.get("llm_api_key")
+
+    if provider == "rule_based" or not api_key:
         return None
 
     try:
         from agent.prompts import build_explanation_prompt
+        from langchain_openai import ChatOpenAI
 
-        provider = "openai" if os.environ.get("OPENAI_API_KEY") else "dashscope"
         prompt = build_explanation_prompt(state, score, recommendation)
 
         if provider == "openai":
-            from langchain_openai import ChatOpenAI
-            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3, max_tokens=300)
-        else:
-            from langchain_openai import ChatOpenAI
+            llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3, max_tokens=300, api_key=api_key)
+        elif provider == "deepseek":
+            llm = ChatOpenAI(
+                model="deepseek-chat",
+                temperature=0.3,
+                max_tokens=300,
+                base_url="https://api.deepseek.com/v1",
+                api_key=api_key,
+            )
+        elif provider == "qwen":
             llm = ChatOpenAI(
                 model="qwen-turbo",
                 temperature=0.3,
                 max_tokens=300,
                 base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-                api_key=os.environ["DASHSCOPE_API_KEY"],
+                api_key=api_key,
             )
+        else:
+            return None
 
         response = llm.invoke(prompt)
         return response.content

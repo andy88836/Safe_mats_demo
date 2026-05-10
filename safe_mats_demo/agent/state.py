@@ -13,5 +13,7 @@ class ScreeningState(TypedDict, total=False):
     final_score: float | None
     recommendation: str | None
     explanation: str | None
+    llm_provider: str
+    llm_api_key: str | None
     warnings: list[str]
     errors: list[str]

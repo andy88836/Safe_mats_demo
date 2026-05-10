@@ -32,9 +32,15 @@ def check_model_files(cfg):
     return checks
 
 
-def run_screening(cif_path: str) -> dict:
+def run_screening(
+    cif_path: str,
+    llm_provider: str = "rule_based",
+    llm_api_key: str | None = None,
+) -> dict:
     return screening_app.invoke({
         "cif_path": cif_path,
+        "llm_provider": llm_provider,
+        "llm_api_key": llm_api_key,
         "warnings": [],
         "errors": [],
     })
@@ -114,9 +120,45 @@ def main():
     with st.sidebar:
         st.header("Settings")
         uploaded_files = st.file_uploader("Upload CIF files", type=["cif"], accept_multiple_files=True)
-        llm_provider = st.selectbox(
-            "LLM Provider", ["Rule-based fallback", "OpenAI (gpt-4o-mini)", "Qwen (qwen-turbo)"]
+        llm_provider_label = st.selectbox(
+            "LLM Provider", ["Rule-based fallback", "OpenAI", "DeepSeek", "Qwen"]
         )
+
+        _provider_map = {
+            "Rule-based fallback": "rule_based",
+            "OpenAI": "openai",
+            "DeepSeek": "deepseek",
+            "Qwen": "qwen",
+        }
+        llm_provider = _provider_map[llm_provider_label]
+
+        llm_api_key = None
+        if llm_provider != "rule_based":
+            llm_api_key = st.text_input(
+                "API Key",
+                type="password",
+                help=f"Enter your {llm_provider_label} API key",
+            )
+            if llm_api_key:
+                if st.button("Test Key"):
+                    with st.spinner("Testing..."):
+                        try:
+                            from langchain_openai import ChatOpenAI
+
+                            _test_configs = {
+                                "openai": {"model": "gpt-4o-mini"},
+                                "deepseek": {"model": "deepseek-chat", "base_url": "https://api.deepseek.com/v1"},
+                                "qwen": {"model": "qwen-turbo", "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1"},
+                            }
+                            cfg = _test_configs[llm_provider]
+                            test_llm = ChatOpenAI(**cfg, api_key=llm_api_key, max_tokens=10)
+                            test_llm.invoke("Say OK")
+                            st.success("API Key is valid!")
+                        except Exception as e:
+                            st.error(f"Key test failed: {e}")
+            else:
+                st.warning("Please enter an API key to use LLM explanation.")
+
         run_button = st.button("Run Screening", type="primary", disabled=not uploaded_files)
 
         st.divider()
@@ -144,7 +186,7 @@ def main():
             tmp.write(uploaded_file.getvalue())
             tmp_path = tmp.name
         try:
-            result = run_screening(tmp_path)
+            result = run_screening(tmp_path, llm_provider, llm_api_key)
             result["mof_id"] = Path(uploaded_file.name).stem
             full_results.append(result)
             if result.get("errors"):
