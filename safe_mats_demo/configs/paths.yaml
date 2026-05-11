@@ -1,0 +1,46 @@
+adsorption_models:
+  root: "data/adsorption"
+  benzene_model: "data/adsorption/benzene/rf_only_seed8_best_model_benzene.pkl"
+  benzene_base_model: "data/adsorption/benzene/best_model_benzene.pkl"
+  benzene_scaler: "data/adsorption/benzene/scaler_benzene.pkl"
+  toluene_model: "data/adsorption/toluene/best_model_toluene.pkl"
+  toluene_scaler: "data/adsorption/toluene/scaler_toluene.pkl"
+  benzene_target_dim: 520
+  toluene_target_dim: 584
+  benzene_training_data: "data/adsorption/benzene/sine_matrix_benzene_IQR_2_modeling_cleaned.csv"
+  toluene_training_data: "data/adsorption/toluene/sine_matrix_toluene_modeling_cleaned_toluene.csv"
+
+toxicity_models:
+  root: "data/toxicity"
+  model_dir: "trained_toxicity_models"
+  endpoints:
+    - name: "LC50"
+      organism: "Pimephales promelas"
+      duration: "96h"
+      training_sdf: "data/toxicity/training/LC50_training.sdf"
+      training_csv: "data/toxicity/training/LC50_training.csv"
+    - name: "LC50DM"
+      organism: "Daphnia magna"
+      duration: "48h"
+      training_sdf: "data/toxicity/training/LC50DM_training.sdf"
+      training_csv: "data/toxicity/training/LC50DM_training.csv"
+    - name: "IGC50"
+      organism: "Tetrahymena pyriformis"
+      duration: "48h"
+      training_sdf: "data/toxicity/training/IGC50_training.sdf"
+      training_csv: "data/toxicity/training/IGC50_training.csv"
+    - name: "IBC50"
+      organism: "Vibrio fischeri"
+      duration: "15min"
+      training_sdf: "data/toxicity/training/IBC50_training.sdf"
+      training_csv: "data/toxicity/training/IBC50_training.csv"
+  fingerprint:
+    type: "morgan"
+    radius: 2
+    n_bits: 2048
+  model_params:
+    n_estimators: 500
+    max_depth: null
+    min_samples_leaf: 2
+    random_state: 42
+    test_size: 0.2

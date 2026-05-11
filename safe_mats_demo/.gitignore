@@ -24,4 +24,3 @@ docs/screenshots/*.png
 # Sensitive
 .env
 *.key
-configs/paths.yaml   # contains local absolute paths, not for repo
