@@ -5,10 +5,8 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Models (too large, distribute via release)
-*.pkl
+# Models
 *.joblib
-trained_toxicity_models/*.pkl
 models/
 
 # Local outputs
